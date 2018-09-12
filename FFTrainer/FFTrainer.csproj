@@ -132,6 +132,7 @@
     </Compile>
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\RefreshEntitiesCommand.cs" />
+    <Compile Include="Converters\QuaternionConverter.cs" />
     <Compile Include="Converters\EnumBooleanConverter.cs" />
     <Compile Include="Converters\EnumDescriptionTypeConverter.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -158,6 +159,9 @@
     </Compile>
     <Compile Include="Views\CharacterDetailsView4.xaml.cs">
       <DependentUpon>CharacterDetailsView4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RotationView.xaml.cs">
+      <DependentUpon>RotationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AccentStyleWindow.xaml.cs">
       <DependentUpon>AccentStyleWindow.xaml</DependentUpon>
@@ -321,6 +325,10 @@
     <Page Include="Views\CharacterDetailsView4.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RotationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\AccentStyleWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

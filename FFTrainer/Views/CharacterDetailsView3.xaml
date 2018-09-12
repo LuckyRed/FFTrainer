@@ -4,8 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" 
+             xmlns:Views="clr-namespace:FFTrainer.Views"
+             xmlns:Converters="clr-namespace:FFTrainer.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1075">
+    <UserControl.Resources>
+        <Converters:QuaternionConverter x:Key="QuaternionConverter" />
+    </UserControl.Resources>
     <Grid>
         <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="182" Margin="10,36,0,0" VerticalAlignment="Top" Width="264"/>
         <Label Content="{DynamicResource SkinColor}" HorizontalAlignment="Left" Margin="92,5,0,0" VerticalAlignment="Top" Width="138" FontSize="16" FontWeight="Bold"/>
@@ -89,6 +94,18 @@
         <CheckBox IsChecked="{Binding Path=CharacterDetails.CharacterDetails.ScaleX.freeze}" Content="X" HorizontalAlignment="Left" Margin="850,66,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="44"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.CharacterDetails.ScaleY.freeze}" Content="Y" HorizontalAlignment="Left" Margin="850,93,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="44"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.CharacterDetails.ScaleZ.freeze}" Content="Z" HorizontalAlignment="Left" Margin="850,121,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="44"/>
-
+        <Label Content="{DynamicResource Rotation}" HorizontalAlignment="Left" Margin="902,152,0,0" VerticalAlignment="Top" Width="81" FontSize="16" FontWeight="Bold"/>
+        <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="200" Margin="840,188,0,0" VerticalAlignment="Top" Width="200" Background="#FF2E2E2E">
+            <Views:RotationView Height="Auto" Width="Auto">
+                <Views:RotationView.DataContext>
+                    <MultiBinding Converter="{StaticResource ResourceKey=QuaternionConverter}">
+                        <Binding Path="CharacterDetails.CharacterDetails.Rotation.value" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+                        <Binding Path="CharacterDetails.CharacterDetails.Rotation2.value" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+                        <Binding Path="CharacterDetails.CharacterDetails.Rotation3.value" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+                        <Binding Path="CharacterDetails.CharacterDetails.Rotation4.value" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+                    </MultiBinding>
+                </Views:RotationView.DataContext>
+            </Views:RotationView>
+        </Border>
     </Grid>
 </UserControl>
