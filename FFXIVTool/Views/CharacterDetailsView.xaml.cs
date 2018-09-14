@@ -25,13 +25,17 @@ namespace FFXIVTool.Views
     /// </summary>
     public partial class CharacterDetailsView : UserControl
     {
-        private ExdCsvReader _exdProvider = new ExdCsvReader();
+        public static CmpReader _colorMap = new CmpReader(Properties.Resources.human);
+        public static ExdCsvReader _exdProvider = new ExdCsvReader();
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         public CharacterDetailsView()
         {
             InitializeComponent();
             _exdProvider.RaceList();
             _exdProvider.TribeList();
+            _exdProvider.MakeCharaMakeFeatureList();
+            _exdProvider.MonsterList();
+            ExdCsvReader.MonsterX = _exdProvider.Monsters.Values.ToArray();
             DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(40) };
             timer.Tick += delegate
             {
@@ -42,6 +46,17 @@ namespace FFXIVTool.Views
                 for (int i = 0; i < _exdProvider.Tribes.Count; i++)
                 {
                     ClanBox.Items.Add(_exdProvider.Tribes[i].Name);
+                }
+                foreach (ExdCsvReader.Monster xD in ExdCsvReader.MonsterX)
+                {
+                    if (xD.Real == true)
+                    {
+                        SpecialControl.ModelBox.Items.Add(new ExdCsvReader.Monster
+                        {
+                            Index = Convert.ToInt32(xD.Index),
+                            Name = xD.Name.ToString()
+                        });
+                    }
                 }
                 timer.IsEnabled = false;
             };
@@ -503,7 +518,200 @@ namespace FFXIVTool.Views
 
         private void SkinSearch_Click(object sender, RoutedEventArgs e)
         {
+            if (SpecialControl.IsOpen)
+            {
+                if (SpecialControl.HairTab.IsSelected || SpecialControl.ModelType.IsSelected)
+                {
+                    SpecialControl.ColorTab.IsSelected = true;
+                    SpecialControl.CharaMakeColorSelector(_colorMap, SpecialControl.GetSkin(CharacterDetails.Clan.value, Convert.ToBoolean(CharacterDetails.Gender.value)), 192);
+                    SpecialControl.ClanBox.SelectedIndex = 0;
+                }
+                else SpecialControl.IsOpen = !SpecialControl.IsOpen;
+            }
+            else
+            {
+                SpecialControl.IsOpen = !SpecialControl.IsOpen;
+                SpecialControl.ColorTab.IsSelected = true;
+                SpecialControl.CharaMakeColorSelector(_colorMap, SpecialControl.GetSkin(CharacterDetails.Clan.value, Convert.ToBoolean(CharacterDetails.Gender.value)), 192);
+                SpecialControl.ClanBox.SelectedIndex = 0;
+            }
+        }
 
+        private void HairSelectButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SpecialControl.IsOpen)
+            {
+                if (SpecialControl.HairTab.IsSelected || SpecialControl.ModelType.IsSelected)
+                {
+                    SpecialControl.ColorTab.IsSelected = true;
+                    SpecialControl.CharaMakeColorSelector(_colorMap, SpecialControl.GetHair(CharacterDetails.Clan.value, Convert.ToBoolean(CharacterDetails.Gender.value)), 192);
+                    SpecialControl.ClanBox.SelectedIndex = 1;
+                }
+                else SpecialControl.IsOpen = !SpecialControl.IsOpen;
+            } else
+            {
+                SpecialControl.IsOpen = !SpecialControl.IsOpen;
+                SpecialControl.ColorTab.IsSelected = true;
+                SpecialControl.CharaMakeColorSelector(_colorMap, SpecialControl.GetHair(CharacterDetails.Clan.value, Convert.ToBoolean(CharacterDetails.Gender.value)), 192);
+                SpecialControl.ClanBox.SelectedIndex = 1;
+            }
+        }
+
+        private void HighlightcolorSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (SpecialControl.IsOpen)
+            {
+                if (SpecialControl.HairTab.IsSelected || SpecialControl.ModelType.IsSelected)
+                {
+                    SpecialControl.ColorTab.IsSelected = true;
+                    SpecialControl.CharaMakeColorSelector(_colorMap, 256, 192);
+                    SpecialControl.ClanBox.SelectedIndex = 2;
+                }
+                else SpecialControl.IsOpen = !SpecialControl.IsOpen;
+            }
+            else
+            {
+                SpecialControl.IsOpen = !SpecialControl.IsOpen;
+                SpecialControl.ColorTab.IsSelected = true;
+                SpecialControl.CharaMakeColorSelector(_colorMap, 256, 192);
+                SpecialControl.ClanBox.SelectedIndex = 2;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (SpecialControl.IsOpen)
+            {
+                if (SpecialControl.HairTab.IsSelected || SpecialControl.ModelType.IsSelected)
+                {
+                    SpecialControl.ColorTab.IsSelected = true;
+                    SpecialControl.CharaMakeColorSelector(_colorMap, 512, 96);
+                    SpecialControl.ClanBox.SelectedIndex = 3;
+                }
+                else SpecialControl.IsOpen = !SpecialControl.IsOpen;
+            }
+            else
+            {
+                SpecialControl.IsOpen = !SpecialControl.IsOpen;
+                SpecialControl.ColorTab.IsSelected = true;
+                SpecialControl.CharaMakeColorSelector(_colorMap, 512, 96);
+                SpecialControl.ClanBox.SelectedIndex = 3;
+            }
+        }
+
+        private void RightEyeSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (SpecialControl.IsOpen)
+            {
+                if (SpecialControl.HairTab.IsSelected || SpecialControl.ModelType.IsSelected)
+                {
+                    SpecialControl.ColorTab.IsSelected = true;
+                    SpecialControl.CharaMakeColorSelector(_colorMap, 0, 192);
+                    SpecialControl.ClanBox.SelectedIndex = 4;
+                }
+                else SpecialControl.IsOpen = !SpecialControl.IsOpen;
+            }
+            else
+            {
+                SpecialControl.IsOpen = !SpecialControl.IsOpen;
+                SpecialControl.ColorTab.IsSelected = true;
+                SpecialControl.CharaMakeColorSelector(_colorMap, 0, 192);
+                SpecialControl.ClanBox.SelectedIndex = 4;
+            }
+        }
+
+        private void LeftEyeSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (SpecialControl.IsOpen)
+            {
+                if (SpecialControl.HairTab.IsSelected || SpecialControl.ModelType.IsSelected)
+                {
+                    SpecialControl.ColorTab.IsSelected = true;
+                    SpecialControl.CharaMakeColorSelector(_colorMap, 0, 192);
+                    SpecialControl.ClanBox.SelectedIndex = 5;
+                }
+                else SpecialControl.IsOpen = !SpecialControl.IsOpen;
+            }
+            else
+            {
+                SpecialControl.IsOpen = !SpecialControl.IsOpen;
+                SpecialControl.ColorTab.IsSelected = true;
+                SpecialControl.CharaMakeColorSelector(_colorMap, 1152, 96);
+                SpecialControl.ClanBox.SelectedIndex = 6;
+            }
+        }
+
+        private void FacePaint_Color_Click(object sender, RoutedEventArgs e)
+        {
+            if (SpecialControl.IsOpen)
+            {
+                if (SpecialControl.HairTab.IsSelected || SpecialControl.ModelType.IsSelected)
+                {
+                    SpecialControl.ColorTab.IsSelected = true;
+                    SpecialControl.CharaMakeColorSelector(_colorMap, 1152, 96);
+                    SpecialControl.ClanBox.SelectedIndex = 6;
+                }
+                else SpecialControl.IsOpen = !SpecialControl.IsOpen;
+            }
+            else
+            {
+                SpecialControl.IsOpen = !SpecialControl.IsOpen;
+                SpecialControl.ColorTab.IsSelected = true;
+                SpecialControl.CharaMakeColorSelector(_colorMap, 1152, 96);
+                SpecialControl.ClanBox.SelectedIndex = 6;
+            }
+        }
+
+        private void HairSelectButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (SpecialControl.IsOpen)
+            {
+                if (SpecialControl.ColorTab.IsSelected||SpecialControl.ModelType.IsSelected)
+                {
+                    SpecialControl.HairTab.IsSelected = true;
+                    if(!SpecialControl.Saveints.Firstimeopening)
+                    {
+                        SpecialControl.Saveints.Firstimeopening = true;
+                        SpecialControl.Saveints.Race = CharacterDetails.Race.value;
+                        SpecialControl.Saveints.Tribe = CharacterDetails.Clan.value;
+                        SpecialControl.CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+                    }
+                    else if (SpecialControl.Saveints.Race != CharacterDetails.Race.value || SpecialControl.Saveints.Tribe != CharacterDetails.Clan.value)
+                        SpecialControl.CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+                }
+                else SpecialControl.IsOpen = !SpecialControl.IsOpen;
+            }
+            else
+            {
+                SpecialControl.IsOpen = !SpecialControl.IsOpen;
+                SpecialControl.HairTab.IsSelected = true;
+                if (!SpecialControl.Saveints.Firstimeopening)
+                {
+                    SpecialControl.Saveints.Firstimeopening = true;
+                    SpecialControl.Saveints.Race = CharacterDetails.Race.value;
+                    SpecialControl.Saveints.Tribe = CharacterDetails.Clan.value;
+                    SpecialControl.CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+                }
+                else if(SpecialControl.Saveints.Race != CharacterDetails.Race.value|| SpecialControl.Saveints.Tribe!=CharacterDetails.Clan.value)
+                    SpecialControl.CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+            }
+        }
+
+        private void ModelTypeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SpecialControl.IsOpen)
+            {
+                if (SpecialControl.ColorTab.IsSelected||SpecialControl.HairTab.IsSelected)
+                {
+                    SpecialControl.ModelType.IsSelected = true;
+                }
+                else SpecialControl.IsOpen = !SpecialControl.IsOpen;
+            }
+            else
+            {
+                SpecialControl.IsOpen = !SpecialControl.IsOpen;
+                SpecialControl.ModelType.IsSelected = true;
+            }
         }
     }
 }

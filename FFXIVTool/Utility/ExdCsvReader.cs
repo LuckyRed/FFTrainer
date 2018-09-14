@@ -2,10 +2,12 @@
 using Microsoft.VisualBasic.FileIO;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace FFXIVTool.Utility
 {
@@ -21,6 +23,12 @@ namespace FFXIVTool.Utility
             public int Index { get; set; }
             public string Name { get; set; }
         }
+        public class CharaMakeCustomizeFeature
+        {
+            public int Index { get; set; }
+            public int FeatureID { get; set; }
+            public Image Icon { get; set; }
+        }
         public class Emote
         {
             public int Index { get; set; }
@@ -33,10 +41,140 @@ namespace FFXIVTool.Utility
                 return Name;
             }
         }
+        public class Monster
+        {
+            public int Index { get; set; }
+            public bool Real { get; set; }
+            public string Name { get; set; }
+            public override string ToString()
+            {
+                return Name;
+            }
+        }
         public static Emote[] Emotesx;
+        public static Monster[]  MonsterX;
         public Dictionary<int, Emote> Emotes = null;
+        public Dictionary<int, CharaMakeCustomizeFeature> CharaMakeFeatures = null;
         public Dictionary<int, Race> Races = null;
         public Dictionary<int, Tribe> Tribes = null;
+        public Dictionary<int, Monster> Monsters = null;
+
+
+        public void MakeCharaMakeFeatureList()
+        {
+            CharaMakeFeatures = new Dictionary<int, CharaMakeCustomizeFeature>();
+
+            try
+            {
+                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.charamakecustomize_exh)))
+                {
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    int rowCount = 0;
+                    parser.ReadFields();
+                    while (!parser.EndOfData)
+                    {
+                        CharaMakeCustomizeFeature feature = new CharaMakeCustomizeFeature();
+
+                        feature.Index = rowCount;
+                        //Processing row
+                        rowCount++;
+                        string[] fields = parser.ReadFields();
+                        int fCount = 0;
+
+                        foreach (string field in fields)
+                        {
+                            fCount++;
+
+                            if (fCount == 2)
+                            {
+                                feature.FeatureID = int.Parse(field);
+                            }
+
+                            if (fCount == 3)
+                            {
+                                object O = Properties.Resources.ResourceManager.GetObject($"_{field}_tex"); //Return an object from the image chan1.png in the project
+                                feature.Icon = (Image)O; //Set the Image property of channelPic to the returned object as Image
+                            }
+                        }
+
+                        Console.WriteLine($"{rowCount} - {feature.FeatureID}");
+                        CharaMakeFeatures.Add(rowCount, feature);
+                    }
+
+                    Console.WriteLine($"{rowCount} charaMakeFeatures read");
+                }
+            }
+            catch (Exception exc)
+            {
+                CharaMakeFeatures = null;
+#if DEBUG
+                throw exc;
+#endif
+            }
+        }
+        public CharaMakeCustomizeFeature GetCharaMakeCustomizeFeature(int index, bool getBitMap)
+        {
+            try
+            {
+                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.charamakecustomize_exh)))
+                {
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    int rowCount = 0;
+                    parser.ReadFields();
+                    while (!parser.EndOfData)
+                    {
+                        if (rowCount != index)
+                        {
+                            rowCount++;
+                            parser.ReadFields();
+                            continue;
+                        }
+
+                        CharaMakeCustomizeFeature feature = new CharaMakeCustomizeFeature();
+
+                        feature.Index = index;
+
+                        //Processing row
+                        rowCount++;
+                        string[] fields = parser.ReadFields();
+                        int fCount = 0;
+
+                        foreach (string field in fields)
+                        {
+                            fCount++;
+
+                            if (fCount == 2)
+                            {
+                                feature.FeatureID = int.Parse(field);
+                            }
+
+                            if (fCount == 3)
+                            {
+                                if (getBitMap)
+                                {
+
+                                    object O = Properties.Resources.ResourceManager.GetObject($"_{field}_tex"); 
+                                    feature.Icon = (Image)O;
+                                }
+                            }
+                        }
+
+                        return feature;
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+#if DEBUG
+                throw exc;
+
+#endif
+            }
+
+            return null;
+        }
         public void TribeList()
         {
             Tribes = new Dictionary<int, Tribe>();
@@ -166,6 +304,52 @@ namespace FFXIVTool.Utility
                             Emotes.Add(emote.Index, emote);
                         }
                         Console.WriteLine($"{rowCount} Emotes read");
+                    }
+                }
+
+                catch (Exception exc)
+                {
+                    Emotes = null;
+#if DEBUG
+                    throw exc;
+#endif
+                }
+            }
+        }
+        public void MonsterList()
+        {
+            Monsters = new Dictionary<int, Monster>();
+            {
+                try
+                {
+                    using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.MonsterList)))
+                    {
+                        parser.TextFieldType = FieldType.Delimited;
+                        parser.SetDelimiters(",");
+                        int rowCount = 0;
+                        parser.ReadFields();
+                        while (!parser.EndOfData)
+                        {
+                            rowCount++;
+                            Monster monster = new Monster();
+                            //Processing row
+                            string[] fields = parser.ReadFields();
+                            int fCount = 0;
+                            monster.Index = int.Parse(fields[0]);
+                            foreach (string field in fields)
+                            {
+                                fCount++;
+
+                                if (fCount == 2)
+                                {
+                                    monster.Name = field;
+                                }
+                            }
+                            if (monster.Name.Length >= 1)monster.Real = true; 
+                            Console.WriteLine($"{rowCount} - {monster.Name}");
+                            Monsters.Add(monster.Index, monster);
+                        }
+                        Console.WriteLine($"{rowCount} Monsters read");
                     }
                 }
 

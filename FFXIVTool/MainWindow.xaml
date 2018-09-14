@@ -14,34 +14,32 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:Views="clr-namespace:FFXIVTool.Views"
         mc:Ignorable="d"
-        Height="584" Width="1115" Loaded="MetroWindow_Loaded" Icon="ffxivmeteorlogo.ico">
-    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-        <Grid>
+        Height="584" Width="1115" Loaded="MetroWindow_Loaded" Icon="ffxivmeteorlogo.ico" ResizeMode="CanMinimize">
+    <Grid>
 
-            <TabControl TabStripPlacement="Top" Margin="0,48,0,0" Background="{DynamicResource MaterialDesignPaper}" DataContext="{Binding Path=CharacterDetails}">
-                <TabItem Header="Character">
-                    <Views:CharacterDetailsView Margin="0,0,-6,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                </TabItem>
-                <TabItem Header="Equipmemt">
-                </TabItem>
-            </TabControl>
-            <ComboBox HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="131" ItemsSource="{Binding Path=CharacterDetails.CharacterDetails.Names}" SelectedIndex="{Binding Path=CharacterDetails.CharacterDetails.SelectedIndex}"/>
-            <Button HorizontalAlignment="Left" Margin="146,6,0,0" VerticalAlignment="Top" Width="74" Command="{Binding Path=CharacterDetails.RefreshEntitiesCommand}">
-                <DockPanel>
-                    <Image Source="Resources/Refresh.png" RenderTransformOrigin="0.5,0.5">
-                        <Image.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="-41.265"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Image.RenderTransform>
-                    </Image>
-                </DockPanel>
-            </Button>
-            <Button x:Name="CharacterRefreshButton" Content="Character Refresh" HorizontalAlignment="Left" Margin="233,6,0,0" VerticalAlignment="Top" Width="151" Click="CharacterRefreshButton_Click"/>
-            <Button x:Name="FindProcess" Content="Find New Process" HorizontalAlignment="Left" Margin="944,6,0,0" VerticalAlignment="Top" Width="151" Click="FindProcess_Click"/>
-        </Grid>
-    </ScrollViewer>
+        <TabControl TabStripPlacement="Top" Margin="0,48,0,0" Background="{DynamicResource MaterialDesignPaper}" DataContext="{Binding Path=CharacterDetails}">
+            <TabItem Header="Character">
+                <Views:CharacterDetailsView Margin="0,0,-6,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            </TabItem>
+            <TabItem Header="Equipmemt">
+            </TabItem>
+        </TabControl>
+        <ComboBox HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="131" ItemsSource="{Binding Path=CharacterDetails.CharacterDetails.Names}" SelectedIndex="{Binding Path=CharacterDetails.CharacterDetails.SelectedIndex}"/>
+        <Button HorizontalAlignment="Left" Margin="146,6,0,0" VerticalAlignment="Top" Width="74" Command="{Binding Path=CharacterDetails.RefreshEntitiesCommand}">
+            <DockPanel>
+                <Image Source="Resources/Refresh.png" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-41.265"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </DockPanel>
+        </Button>
+        <Button x:Name="CharacterRefreshButton" Content="Character Refresh" HorizontalAlignment="Left" Margin="233,6,0,0" VerticalAlignment="Top" Width="151" Click="CharacterRefreshButton_Click"/>
+        <Button x:Name="FindProcess" Content="Find New Process" HorizontalAlignment="Left" Margin="944,6,0,0" VerticalAlignment="Top" Width="151" Click="FindProcess_Click"/>
+    </Grid>
 </controls:MetroWindow>
