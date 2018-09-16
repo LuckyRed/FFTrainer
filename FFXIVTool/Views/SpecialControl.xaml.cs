@@ -41,7 +41,7 @@ namespace FFXIVTool.Views
 
         public static class Saveints
         {
-            public static byte Race =0;
+            public static byte Race = 0;
             public static byte Tribe = 0;
             public static bool Firstimeopening = false;
         }
@@ -63,7 +63,7 @@ namespace FFXIVTool.Views
                 ListViewItem item = new ListViewItem();
                 item.Width = 64;
                 item.Height = 64;
-                var newColor = new System.Windows.Media.SolidColorBrush(Color.FromArgb(colorMap.Colors[i].A, colorMap.Colors[i].R, colorMap.Colors[i].G, colorMap.Colors[i].B));
+                var newColor = new SolidColorBrush(Color.FromArgb(colorMap.Colors[i].A, colorMap.Colors[i].R, colorMap.Colors[i].G, colorMap.Colors[i].B));
                 item.Background = newColor;
                 item.FontSize = 24;
                 item.FontWeight = FontWeights.Bold;
@@ -218,7 +218,7 @@ namespace FFXIVTool.Views
 
             for (var i = 1; i < length; i++)
             {
-                Debug.WriteLine(startIndex + i);
+               // Debug.WriteLine(startIndex + i);
                 var feature = _reader.CharaMakeFeatures[startIndex + i];
 
                 if (feature.FeatureID == dataKey)

@@ -122,8 +122,14 @@
     <Compile Include="Views\CharacterDetailsView.xaml.cs">
       <DependentUpon>CharacterDetailsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CharacterDetailsView2.xaml.cs">
+      <DependentUpon>CharacterDetailsView2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmoteFlyOut.xaml.cs">
       <DependentUpon>EmoteFlyOut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EquipmentFlyOut.xaml.cs">
+      <DependentUpon>EquipmentFlyOut.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RotationView.xaml.cs">
       <DependentUpon>RotationView.xaml</DependentUpon>
@@ -150,7 +156,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\CharacterDetailsView2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EmoteFlyOut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EquipmentFlyOut.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,8 +203,10 @@
     <None Include="Resources\actiontimeline.csv" />
     <None Include="Resources\charamakecustomize.exh.csv" />
     <None Include="Resources\human.cmp" />
+    <None Include="Resources\Item.csv" />
     <None Include="Resources\MonsterList.csv" />
     <None Include="Resources\raceEN.csv" />
+    <None Include="Resources\stain.exh_en.csv" />
     <None Include="Resources\tribe.exh_en.csv" />
   </ItemGroup>
   <ItemGroup>

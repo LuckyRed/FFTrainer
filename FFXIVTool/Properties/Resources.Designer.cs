@@ -8635,7 +8635,29 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0,&quot;Player&quot;
+        ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1 [BYTE(0x2)][0x10],2 [STRING(0x4)][0x15],3 [STRING(0x6)][0x20],4
+        ///0,&quot;&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///1,&quot;gil&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///2,&quot;fire shard&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///3,&quot;ice shard&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///4,&quot;wind shard&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///5,&quot;earth shard&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///6,&quot;lightning shard&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///7,&quot;water shard&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///8,&quot;fire crystal&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///9,&quot;ice crystal&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///10,&quot;wind crystal&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///11,&quot;e [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Item {
+            get {
+                return ResourceManager.GetString("Item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1
+        ///0,&quot;Player&quot;
         ///1,&quot;Chocobo&quot;
         ///2,&quot;Magitek Reaper&quot;
         ///3,&quot;Amalj&apos;aa&quot;
@@ -8668,9 +8690,7 @@ namespace FFXIVTool.Properties {
         ///30,&quot;Funguar C (Blue)&quot;
         ///31,&quot;Galago&quot;
         ///32,&quot;Lemur&quot;
-        ///33,&quot;Galago (+ Collar)&quot;
-        ///34,&quot;Ochu&quot;
-        ///35, [rest of string was truncated]&quot;;.
+        ///33,&quot;Gala [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string MonsterList {
             get {
@@ -8692,6 +8712,26 @@ namespace FFXIVTool.Properties {
         internal static string raceEN {
             get {
                 return ResourceManager.GetString("raceEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Index,0 [UINT(0x7)][0x4],1 [UBYTE(0x3)][0x8],2 [STRING(0x0)][0x0],3 [BBOOL(0x19)][0x9],4 [BBOOL(0x1a)][0x9]
+        ///0,0,2,&quot;None&quot;,false,true
+        ///1,14999504,2,&quot;Snow White&quot;,false,true
+        ///2,11315362,2,&quot;Ash Grey&quot;,false,true
+        ///3,9013124,2,&quot;Goobbue Grey&quot;,false,true
+        ///4,6645093,2,&quot;Slate Grey&quot;,false,true
+        ///5,4736834,2,&quot;Charcoal Grey&quot;,false,true
+        ///6,2828579,2,&quot;Soot Black&quot;,false,true
+        ///7,15114134,4,&quot;Rose Pink&quot;,false,true
+        ///8,8612201,4,&quot;Lilac Purple&quot;,false,true
+        ///9,5969705,4,&quot;Rolanberry Red&quot;,false,true
+        ///10,7871002,4,&quot;Dalamud Red&quot;,false,t [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string stain_exh_en {
+            get {
+                return ResourceManager.GetString("stain_exh_en", resourceCulture);
             }
         }
         

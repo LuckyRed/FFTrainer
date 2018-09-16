@@ -50,7 +50,7 @@
 
                                 </ListView.ItemsPanel>
                             </ListView>
-                            <ComboBox x:Name="ClanBox" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="146" SelectionChanged="ClanBox_SelectionChanged" PreviewMouseDown="ClanBox_PreviewMouseDown">
+                            <ComboBox materialDesign:HintAssist.Hint="Select Type" x:Name="ClanBox" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="146" SelectionChanged="ClanBox_SelectionChanged" PreviewMouseDown="ClanBox_PreviewMouseDown">
                                 <ComboBoxItem Content="Skin Color"/>
                                 <ComboBoxItem Content="Hair Color"/>
                                 <ComboBoxItem Content="Highlights Color"/>
@@ -61,13 +61,13 @@
                             </ComboBox>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Hair Style Selector" Name="HairTab">
+                    <TabItem Header="Hair Selector" Name="HairTab">
                         <Grid Margin="-7,0,-4,-5">
                             <Grid.Background>
                                 <ImageBrush ImageSource="/FFXIVTool;component/Resources/Background.png">
                                 </ImageBrush>
                             </Grid.Background>
-                            <ListView x:Name="CharacterFeature" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,10" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="CharacterFeature_SelectionChanged">
+                            <ListView x:Name="CharacterFeature" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="CharacterFeature_SelectionChanged" Margin="4,0,6,0">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Image Source="{Binding FeatureImage}" Height="95" Width="95"/>

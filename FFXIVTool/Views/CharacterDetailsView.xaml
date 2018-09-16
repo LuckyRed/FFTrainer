@@ -6,9 +6,10 @@
              xmlns:Views="clr-namespace:FFXIVTool.Views"
              xmlns:Converters="clr-namespace:FFXIVTool.Converters"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="FFXIVTool.Views.CharacterDetailsView"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" 
+             x:Class="FFXIVTool.Views.CharacterDetailsView"
              TextElement.FontSize="13.25"
-             mc:Ignorable="d" d:DesignWidth="1115" Height="460" BorderThickness="0,0,1,0">
+             mc:Ignorable="d" d:DesignWidth="1115" Height="460">
 
     <UserControl.Resources>
         <Converters:QuaternionConverter x:Key="QuaternionConverter" />
@@ -152,7 +153,7 @@
         <mah:NumericUpDown x:Name="CamY" Value="{Binding Path=CharacterDetails.CamY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="932,375,0,0" VerticalAlignment="Top" Width="166" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamY_SourceUpdated"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.CamZ.freeze}" Content="Cam Z" HorizontalAlignment="Left" Margin="846,408,0,0" VerticalAlignment="Top"/>
         <mah:NumericUpDown x:Name="CamZ" Value="{Binding Path=CharacterDetails.CamZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="932,406,0,0" VerticalAlignment="Top" Width="166" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamZ_SourceUpdated"/>
-        <Views:SpecialControl x:Name="SpecialControl" Width="583" HorizontalAlignment="Left" VerticalAlignment="Top" Height="460" Visibility="Collapsed" Margin="531,0,0,0"/>
+        <Views:SpecialControl x:Name="SpecialControl" Width="583" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="531,0,0,-12"/>
 
     </Grid>
 </UserControl>
