@@ -2,20 +2,13 @@
 using FFXIVTool.Utility;
 using FFXIVTool.ViewModel;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace FFXIVTool.Views
@@ -35,6 +28,9 @@ namespace FFXIVTool.Views
             _exdProvider.TribeList();
             _exdProvider.MakeCharaMakeFeatureList();
             _exdProvider.MonsterList();
+            _exdProvider.MakeWeatherList();
+            _exdProvider.MakeWeatherRateList();
+            _exdProvider.MakeTerritoryTypeList();
             ExdCsvReader.MonsterX = _exdProvider.Monsters.Values.ToArray();
             DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(40) };
             timer.Tick += delegate

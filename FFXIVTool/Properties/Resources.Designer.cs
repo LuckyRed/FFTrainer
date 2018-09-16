@@ -8625,6 +8625,66 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Index,0 [USHORT(0x5)][0xbc],1 [BBOOL(0x19)][0xef],2 [UINT(0x7)][0x0],3 [UINT(0x7)][0x4],4 [UINT(0x7)][0x8],5 [UINT(0x7)][0xc],6 [UINT(0x7)][0x10],7 [UINT(0x7)][0x14],8 [UINT(0x7)][0x18],9 [UINT(0x7)][0x1c],10 [UINT(0x7)][0x20],11 [UINT(0x7)][0x24],12 [UINT(0x7)][0x28],13 [UINT(0x7)][0x2c],14 [UINT(0x7)][0x30],15 [UINT(0x7)][0x34],16 [UINT(0x7)][0x38],17 [UINT(0x7)][0x3c],18 [UINT(0x7)][0x40],19 [UINT(0x7)][0x44],20 [UINT(0x7)][0x48],21 [UINT(0x7)][0x4c],22 [UINT(0x7)][0x50],23 [UINT(0x7)][0x54],24 [UINT(0x7 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string enpcbase_exh {
+            get {
+                return ResourceManager.GetString("enpcbase_exh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1000000,&quot;&quot;
+        ///1000001,&quot;&quot;
+        ///1000002,&quot;&quot;
+        ///1000003,&quot;&quot;
+        ///1000004,&quot;&quot;
+        ///1000005,&quot;&quot;
+        ///1000006,&quot;&quot;
+        ///1000007,&quot;&quot;
+        ///1000008,&quot;&quot;
+        ///1000009,&quot;&quot;
+        ///1000010,&quot;&quot;
+        ///1000011,&quot;&quot;
+        ///1000012,&quot;&quot;
+        ///1000013,&quot;&quot;
+        ///1000014,&quot;&quot;
+        ///1000015,&quot;&quot;
+        ///1000016,&quot;&quot;
+        ///1000017,&quot;&quot;
+        ///1000018,&quot;&quot;
+        ///1000019,&quot;&quot;
+        ///1000020,&quot;&quot;
+        ///1000021,&quot;&quot;
+        ///1000022,&quot;&quot;
+        ///1000023,&quot;&quot;
+        ///1000024,&quot;&quot;
+        ///1000025,&quot;&quot;
+        ///1000026,&quot;&quot;
+        ///1000027,&quot;&quot;
+        ///1000028,&quot;&quot;
+        ///1000029,&quot;&quot;
+        ///1000030,&quot;&quot;
+        ///1000031,&quot;&quot;
+        ///1000032,&quot;&quot;
+        ///1000033,&quot;&quot;
+        ///1000034,&quot;&quot;
+        ///1000035,&quot;&quot;
+        ///1000036,&quot;&quot;
+        ///1000037,&quot;&quot;
+        ///1000038,&quot;&quot;
+        ///1000039,&quot;&quot;
+        ///1000040,&quot;&quot;
+        ///1000041,&quot;&quot;
+        ///1000042, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string enpcresident_exh_en {
+            get {
+                return ResourceManager.GetString("enpcresident_exh_en", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] human {
@@ -8635,19 +8695,19 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1 [BYTE(0x2)][0x10],2 [STRING(0x4)][0x15],3 [STRING(0x6)][0x20],4
-        ///0,&quot;&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///1,&quot;gil&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///2,&quot;fire shard&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///3,&quot;ice shard&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///4,&quot;wind shard&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///5,&quot;earth shard&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///6,&quot;lightning shard&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///7,&quot;water shard&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///8,&quot;fire crystal&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///9,&quot;ice crystal&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///10,&quot;wind crystal&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///11,&quot;e [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to 0,&quot;&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///1,&quot;gil&quot;,63,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///2,&quot;fire shard&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///3,&quot;ice shard&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///4,&quot;wind shard&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///5,&quot;earth shard&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///6,&quot;lightning shard&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///7,&quot;water shard&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///8,&quot;fire crystal&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///9,&quot;ice crystal&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///10,&quot;wind crystal&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///11,&quot;earth crystal&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///12,&quot;lightning crystal&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Item {
             get {
@@ -8736,6 +8796,15 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1 [STRING(0x0)][0x4],2 [UBYTE(0x3)][0x2c],3 [USHORT(0x5)][0x1c],4 [USHORT(0x5)][0x1e],5 [USHORT(0x5)][0x20],6 [USHORT(0x5)][0x22],7 [UBYTE(0x3)][0x2d],8 [UBYTE(0x3)][0x2e],9 [UBYTE(0x3)][0x2f],10 [USHORT(0x5)][0x24],11 [BBOOL(0x19)][0x37],12 [UBYTE(0x3)][0x30],13 [BBOOL(0x1a)][0x37],14 [UBYTE(0x3)][0x31],15 [BBOOL(0x1b)][0x37],16 [BBOOL(0x1c)][0x37],17 [BBOOL(0x1d)][0x37],18 [BBOOL(0x1e)][0x37],19 [USHORT(0x5)][0x26],20 [INT(0x6)][0xc],21 [INT(0x6)][0x10],22 [UINT(0x7)][0x8],23 [U [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string territorytype_exh {
+            get {
+                return ResourceManager.GetString("territorytype_exh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1
         ///0,&quot;None&quot;
         ///1,&quot;Midlander&quot;
@@ -8755,6 +8824,39 @@ namespace FFXIVTool.Properties {
         internal static string tribe_exh_en {
             get {
                 return ResourceManager.GetString("tribe_exh_en", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Index,0 [0x6][0x18],1 [0x0][0x0],2 [0x0][0x4],3 [0x0][0x8],4 [0x0][0xc],5 [0x0][0x10],6 [0x0][0x14]
+        ///0,0,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;
+        ///1,60201,&quot;Clear Skies&quot;,&quot;clear&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;
+        ///2,60202,&quot;Fair Skies&quot;,&quot;fair&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;
+        ///3,60203,&quot;Clouds&quot;,&quot;overcast&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;
+        ///4,60204,&quot;Fog&quot;,&quot;foggy&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;
+        ///5,60205,&quot;Wind&quot;,&quot;windy&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;
+        ///6,60206,&quot;Gales&quot;,&quot;gusty&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;
+        ///7,60207,&quot;Rain&quot;,&quot;rainy&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;
+        ///8,60208,&quot;Showers&quot;,&quot;showery&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;
+        ///9,60209,&quot;Thunder&quot;,&quot;thundery&quot....
+        /// </summary>
+        internal static string weather_0_exh_en {
+            get {
+                return ResourceManager.GetString("weather_0_exh_en", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Index,0 [INT(0x6)][0x0],1 [UBYTE(0x3)][0x20],2 [INT(0x6)][0x4],3 [UBYTE(0x3)][0x21],4 [INT(0x6)][0x8],5 [UBYTE(0x3)][0x22],6 [INT(0x6)][0xc],7 [UBYTE(0x3)][0x23],8 [INT(0x6)][0x10],9 [UBYTE(0x3)][0x24],10 [INT(0x6)][0x14],11 [UBYTE(0x3)][0x25],12 [INT(0x6)][0x18],13 [UBYTE(0x3)][0x26],14 [INT(0x6)][0x1c],15 [UBYTE(0x3)][0x27]
+        ///0,2,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+        ///1,7,5,7,15,4,10,3,10,2,15,1,30,2,15,0,0
+        ///2,7,5,7,15,4,10,3,10,2,15,1,30,2,15,0,0
+        ///3,9,5,7,15,4,10,3,10,2,15,1,30,2,15,0,0
+        ///4,9,5,7,15,4,10,3,10,2, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string weatherrate_exh {
+            get {
+                return ResourceManager.GetString("weatherrate_exh", resourceCulture);
             }
         }
     }

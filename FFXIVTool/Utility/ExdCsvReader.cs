@@ -1,4 +1,5 @@
 ﻿using FFXIVTool.Properties;
+using FFXIVTool.Views;
 using Microsoft.VisualBasic.FileIO;
 using Newtonsoft.Json;
 using System;
@@ -72,6 +73,30 @@ namespace FFXIVTool.Utility
                 return Name;
             }
         }
+        public class Resident
+        {
+            public int Index { get; set; }
+            public string Name { get; set; }
+            public GearSet Gear { get; set; }
+
+            public override string ToString()
+            {
+                return Name;
+            }
+
+            public bool IsGoodNpc()
+            {
+                if (Gear.Customize[0] != 0 && Name.Length != 0)
+                    return true;
+
+                return false;
+            }
+
+            public string MakeGearString()
+            {
+                return $"{EquipmentFlyOut.GearTupleToComma(Gear.HeadGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.BodyGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.HandsGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.LegsGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.FeetGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.EarGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.NeckGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.WristGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.LRingGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.RRingGear)}";
+            }
+        }
         public class Race
         {
             public int Index { get; set; }
@@ -106,6 +131,21 @@ namespace FFXIVTool.Utility
                 return Name;
             }
         }
+        public class Weather
+        {
+            public int Index { get; set; }
+            public string Name { get; set; }
+        }
+        public class TerritoryType
+        {
+            public int Index { get; set; }
+            public WeatherRate WeatherRate { get; set; }
+        }
+        public class WeatherRate
+        {
+            public int Index { get; set; }
+            public List<Weather> AllowedWeathers { get; set; }
+        }
         public class Monster
         {
             public int Index { get; set; }
@@ -120,8 +160,12 @@ namespace FFXIVTool.Utility
         public static Monster[] MonsterX;
         public static Dye[] DyesX;
         public Dictionary<int, Item> Items = null;
+        public Dictionary<int, Weather> Weathers = null;
+        public Dictionary<int, WeatherRate> WeatherRates = null;
+        public Dictionary<int, TerritoryType> TerritoryTypes = null;
         public Dictionary<int, Dye> Dyes = null;
         public Dictionary<int, Emote> Emotes = null;
+        public Dictionary<int, Resident> Residents = null;
         public Dictionary<int, CharaMakeCustomizeFeature> CharaMakeFeatures = null;
         public Dictionary<int, Race> Races = null;
         public Dictionary<int, Tribe> Tribes = null;
@@ -166,11 +210,11 @@ namespace FFXIVTool.Utility
                             }
                         }
 
-                   //     Console.WriteLine($"{rowCount} - {feature.FeatureID}");
+                        //     Console.WriteLine($"{rowCount} - {feature.FeatureID}");
                         CharaMakeFeatures.Add(rowCount, feature);
                     }
 
-                //    Console.WriteLine($"{rowCount} charaMakeFeatures read");
+                    //    Console.WriteLine($"{rowCount} charaMakeFeatures read");
                 }
             }
             catch (Exception exc)
@@ -273,11 +317,11 @@ namespace FFXIVTool.Utility
                             }
                         }
 
-                  //      Console.WriteLine($"{rowCount} - {tribe.Name}");
+                        //      Console.WriteLine($"{rowCount} - {tribe.Name}");
                         Tribes.Add(tribe.Index, tribe);
                     }
 
-            //        Console.WriteLine($"{rowCount} Tribes read");
+                    //        Console.WriteLine($"{rowCount} Tribes read");
                 }
             }
 
@@ -319,11 +363,11 @@ namespace FFXIVTool.Utility
                             }
                         }
 
-                      //  Console.WriteLine($"{rowCount} - {race.Name}");
+                        //  Console.WriteLine($"{rowCount} - {race.Name}");
                         Races.Add(race.Index, race);
                     }
 
-                //    Console.WriteLine($"{rowCount} Races read");
+                    //    Console.WriteLine($"{rowCount} Races read");
                 }
             }
 
@@ -368,10 +412,10 @@ namespace FFXIVTool.Utility
                             if (emote.Name.Contains("mon_sp/")) { emote.Name = emote.Name.Remove(0, 7).ToString(); emote.SpeacialReal = true; }
                             if (emote.Name.Contains("battle/")) { emote.Name = emote.Name.Remove(0, 7).ToString(); emote.BattleReal = true; }
                             if (emote.Name.Contains("human_sp/")) { emote.Name = emote.Name.Remove(0, 9).ToString(); emote.SpeacialReal = true; }
-                        //    Console.WriteLine($"{rowCount} - {emote.Name}");
+                            //    Console.WriteLine($"{rowCount} - {emote.Name}");
                             Emotes.Add(emote.Index, emote);
                         }
-                    //    Console.WriteLine($"{rowCount} Emotes read");
+                        //    Console.WriteLine($"{rowCount} Emotes read");
                     }
                 }
 
@@ -414,7 +458,7 @@ namespace FFXIVTool.Utility
                                 }
                             }
                             if (monster.Name.Length >= 1) monster.Real = true;
-                           // Console.WriteLine($"{rowCount} - {monster.Name}");
+                            // Console.WriteLine($"{rowCount} - {monster.Name}");
                             Monsters.Add(monster.Index, monster);
                         }
                         //Console.WriteLine($"{rowCount} Monsters read");
@@ -581,15 +625,383 @@ namespace FFXIVTool.Utility
                                     }
                                 }
                             }
-                         //   Debug.WriteLine(item.Name + " - " + item.Type);
+                            //   Debug.WriteLine(item.Name + " - " + item.Type);
                             Items.Add(index, item);
                         }
-                    //    Debug.WriteLine($"ExdCsvReader: {rowCount} items read");
+                        //    Debug.WriteLine($"ExdCsvReader: {rowCount} items read");
                     }
                 }
                 catch (Exception exc)
                 {
                     Items = null;
+#if DEBUG
+                    throw exc;
+#endif
+                }
+            }
+        }
+        public void MakeResidentList()
+        {
+            Residents = new Dictionary<int, Resident>();
+
+            try
+            {
+                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.enpcresident_exh_en)))
+                {
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    int rowCount = 0;
+                    parser.ReadFields();
+                    while (!parser.EndOfData)
+                    {
+                        //Processing row
+                        rowCount++;
+                        string[] fields = parser.ReadFields();
+                        int fCount = 0;
+
+                        int id = 0;
+                        string name = "";
+
+                        foreach (string field in fields)
+                        {
+                            fCount++;
+
+                            if (fCount == 1)
+                            {
+                                id = int.Parse(field);
+                            }
+
+                            if (fCount == 2)
+                            {
+                                name = field;
+                            }
+                        }
+                        //  Console.WriteLine($"{id} - {name}");
+                        Residents.Add(id, new Resident { Index = id, Name = name });
+                    }
+                    //    Console.WriteLine($"{rowCount} residentNames read");
+                }
+                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.enpcbase_exh)))
+                {
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    int rowCount = 0;
+                    parser.ReadFields();
+                    while (!parser.EndOfData)
+                    {
+                        //Processing row
+                        rowCount++;
+                        string[] fields = parser.ReadFields();
+                        int fCount = 0;
+
+                        int id = 0;
+                        List<byte> customize = new List<byte>();
+                        GearSet gear = new GearSet();
+                        int dDataCount = 0;
+                        int modelId = 0;
+
+                        foreach (string field in fields)
+                        {
+                            fCount++;
+
+                            if (fCount == 1)
+                            {
+                                id = int.Parse(field);
+                            }
+
+                            if (fCount == 37)
+                            {
+                                modelId = int.Parse(field);
+                            }
+
+                            if (fCount >= 38 && fCount <= 63)
+                            {
+                                try
+                                {
+                                    customize.Add(byte.Parse(field));
+                                    dDataCount++;
+                                }
+                                catch (Exception exc)
+                                {
+                                    throw exc;
+                                    //Console.WriteLine("Invalid: " + field);
+                                }
+                            }
+
+                            if (fCount == 67)
+                            {
+                                gear.MainWep = EquipmentFlyOut.CommaToWepTuple(field);
+                            }
+
+                            if (fCount == 69)
+                            {
+                                gear.OffWep = EquipmentFlyOut.CommaToWepTuple(field);
+                            }
+
+                            if (fCount >= 71 && fCount <= 90)
+                            {
+                                Int32 fieldint = 0;
+
+                                if (fCount != 73)
+                                    fieldint = Int32.Parse(field);
+
+                                var bytes = BitConverter.GetBytes(fieldint);
+
+                                var model = BitConverter.ToUInt16(bytes, 0);
+
+                                switch (fCount - 1)
+                                {
+                                    case 70:
+                                        gear.HeadGear = new GearTuple(model, bytes[2], 0);
+                                        break;
+                                    case 71:
+                                        gear.HeadGear = new GearTuple(gear.HeadGear.Item1, gear.HeadGear.Item2,
+                                            int.Parse(field));
+                                        break;
+                                    case 72:
+                                        break;
+                                    case 73:
+                                        gear.BodyGear = new GearTuple(model, bytes[2], 0);
+                                        break;
+                                    case 74:
+                                        gear.BodyGear = new GearTuple(gear.BodyGear.Item1, gear.BodyGear.Item2,
+                                            int.Parse(field));
+                                        break;
+                                    case 75:
+                                        gear.HandsGear = new GearTuple(model, bytes[2], 0);
+                                        break;
+                                    case 76:
+                                        gear.HandsGear = new GearTuple(gear.HandsGear.Item1, gear.HandsGear.Item2,
+                                            int.Parse(field));
+                                        break;
+                                    case 77:
+                                        gear.LegsGear = new GearTuple(model, bytes[2], 0);
+                                        break;
+                                    case 78:
+                                        gear.LegsGear = new GearTuple(gear.LegsGear.Item1, gear.LegsGear.Item2,
+                                            int.Parse(field));
+                                        break;
+                                    case 79:
+                                        gear.FeetGear = new GearTuple(model, bytes[2], 0);
+                                        break;
+                                    case 80:
+                                        gear.FeetGear = new GearTuple(gear.FeetGear.Item1, gear.FeetGear.Item2,
+                                            int.Parse(field));
+                                        break;
+
+                                    case 81:
+                                        gear.EarGear = new GearTuple(model, bytes[2], 0);
+                                        break;
+                                    case 82:
+                                        gear.EarGear = new GearTuple(gear.EarGear.Item1, gear.EarGear.Item2,
+                                            int.Parse(field));
+                                        break;
+                                    case 83:
+                                        gear.NeckGear = new GearTuple(model, bytes[2], 0);
+                                        break;
+                                    case 84:
+                                        gear.NeckGear = new GearTuple(gear.NeckGear.Item1, gear.NeckGear.Item2,
+                                            int.Parse(field));
+                                        break;
+                                    case 85:
+                                        gear.WristGear = new GearTuple(model, bytes[2], 0);
+                                        break;
+                                    case 86:
+                                        gear.WristGear = new GearTuple(gear.WristGear.Item1, gear.WristGear.Item2,
+                                            int.Parse(field));
+                                        break;
+                                    case 87:
+                                        gear.LRingGear = new GearTuple(model, bytes[2], 0);
+                                        break;
+                                    case 88:
+                                        gear.LRingGear = new GearTuple(gear.LRingGear.Item1, gear.LRingGear.Item2,
+                                            int.Parse(field));
+                                        break;
+                                    case 89:
+                                        gear.RRingGear = new GearTuple(model, bytes[2], 0);
+                                        break;
+                                    case 90:
+                                        gear.RRingGear = new GearTuple(gear.RRingGear.Item1, gear.RRingGear.Item2,
+                                            int.Parse(field));
+                                        break;
+                                }
+                            }
+                        }
+                        //            Console.WriteLine($"{id} - {wepCSV} - {dDataCount}");
+
+                        gear.Customize = customize.ToArray();
+
+                        try
+                        {
+                            Residents[id].Gear = gear;
+                        }
+                        catch (KeyNotFoundException)
+                        {
+                            Console.WriteLine("Did not find corresponding entry for: " + id);
+                        }
+
+                    }
+                    //    Console.WriteLine($"{rowCount} idLookMappings read");
+                }
+
+            }
+            catch (Exception exc)
+            {
+                Residents = null;
+#if DEBUG
+                throw exc;
+#endif
+            }
+        }
+        public void MakeWeatherRateList()
+        {
+            if (Weathers == null)
+                throw new Exception("Weathers has to be loaded for WeatherRates to be read");
+
+            WeatherRates = new Dictionary<int, WeatherRate>();
+
+            try
+            {
+                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.weatherrate_exh)))
+                {
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    int rowCount = 0;
+                    parser.ReadFields();
+                    while (!parser.EndOfData)
+                    {
+                        WeatherRate rate = new WeatherRate();
+
+                        rate.AllowedWeathers = new List<Weather>();
+
+                        //Processing row
+                        rowCount++;
+                        string[] fields = parser.ReadFields();
+
+                        rate.Index = int.Parse(fields[0]);
+
+                        for (int i = 1; i < 17;)
+                        {
+                            int weatherId = int.Parse(fields[i]);
+
+                            if (weatherId == 0)
+                                break;
+
+                            rate.AllowedWeathers.Add(Weathers[weatherId]);
+
+                            i += 2;
+                        }
+
+                        WeatherRates.Add(rate.Index, rate);
+                    }
+
+                 //   Console.WriteLine($"{rowCount} weatherRates read");
+                }
+            }
+            catch (Exception exc)
+            {
+                WeatherRates = null;
+#if DEBUG
+                throw exc;
+#endif
+            }
+        }
+
+        public void MakeTerritoryTypeList()
+        {
+            if (WeatherRates == null)
+                throw new Exception("WeatherRates has to be loaded for TerritoryTypes to be read");
+
+            TerritoryTypes = new Dictionary<int, TerritoryType>();
+
+            try
+            {
+                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.territorytype_exh)))
+                {
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    int rowCount = 0;
+                    parser.ReadFields();
+                    while (!parser.EndOfData)
+                    {
+                        TerritoryType territory = new TerritoryType();
+
+                        //Processing row
+                        rowCount++;
+                        string[] fields = parser.ReadFields();
+                        int fCount = 0;
+
+                        territory.Index = int.Parse(fields[0]);
+
+                        foreach (string field in fields)
+                        {
+                            fCount++;
+
+                            if (fCount == 14)
+                            {
+                                if (field != "0")
+                                    territory.WeatherRate = WeatherRates[int.Parse(field)];
+                            }
+                        }
+
+                        TerritoryTypes.Add(territory.Index, territory);
+                    }
+
+                    //Console.WriteLine($"{rowCount} TerritoryTypes read");
+                }
+            }
+            catch (Exception exc)
+            {
+                TerritoryTypes = null;
+#if DEBUG
+                throw exc;
+#endif
+            }
+        }
+        public void MakeWeatherList()
+        {
+            Weathers = new Dictionary<int, Weather>();
+            {
+                try
+                {
+                    using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.weather_0_exh_en)))
+                    {
+                        parser.TextFieldType = FieldType.Delimited;
+                        parser.SetDelimiters(",");
+                        int rowCount = 0;
+                        parser.ReadFields();
+                        while (!parser.EndOfData)
+                        {
+                            Weather weather = new Weather();
+
+                            //Processing row
+                            rowCount++;
+                            string[] fields = parser.ReadFields();
+                            int fCount = 0;
+
+                            weather.Index = int.Parse(fields[0]);
+
+                            foreach (string field in fields)
+                            {
+                                fCount++;
+
+                                if (fCount == 3)
+                                {
+                                    weather.Name = field;
+                                }
+                            }
+
+                          //  Console.WriteLine($"{rowCount} - {weather.Name}");
+                            Weathers.Add(weather.Index, weather);
+                        }
+
+                    //    Console.WriteLine($"{rowCount} weathers read");
+                    }
+                }
+
+                catch (Exception exc)
+                {
+                    Weathers = null;
 #if DEBUG
                     throw exc;
 #endif

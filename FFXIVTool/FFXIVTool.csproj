@@ -125,6 +125,12 @@
     <Compile Include="Views\CharacterDetailsView2.xaml.cs">
       <DependentUpon>CharacterDetailsView2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CharacterDetailsView3.xaml.cs">
+      <DependentUpon>CharacterDetailsView3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CharacterDetailsView4.xaml.cs">
+      <DependentUpon>CharacterDetailsView4.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmoteFlyOut.xaml.cs">
       <DependentUpon>EmoteFlyOut.xaml</DependentUpon>
     </Compile>
@@ -157,6 +163,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CharacterDetailsView2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CharacterDetailsView3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CharacterDetailsView4.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -202,12 +216,17 @@
     </None>
     <None Include="Resources\actiontimeline.csv" />
     <None Include="Resources\charamakecustomize.exh.csv" />
+    <None Include="Resources\enpcbase.exh.csv" />
+    <None Include="Resources\enpcresident.exh_en.csv" />
     <None Include="Resources\human.cmp" />
     <None Include="Resources\Item.csv" />
     <None Include="Resources\MonsterList.csv" />
     <None Include="Resources\raceEN.csv" />
     <None Include="Resources\stain.exh_en.csv" />
+    <None Include="Resources\territorytype.exh.csv" />
     <None Include="Resources\tribe.exh_en.csv" />
+    <None Include="Resources\weatherrate.exh.csv" />
+    <None Include="Resources\weather_0.exh_en.csv" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.config" />

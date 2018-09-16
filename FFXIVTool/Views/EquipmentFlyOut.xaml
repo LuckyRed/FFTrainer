@@ -35,18 +35,18 @@
                 <controls:MetroAnimatedTabControl x:Name="AnimatedTabControl" Height="386"
                                               Margin="2"
                                               controls:TabControlHelper.Underlined="TabPanel"
-                                              Background="{DynamicResource MaterialDesignPaper}"
+                                              Background="{DynamicResource MaterialDesignPaper}" SelectionChanged="AnimatedTabControl_SelectionChanged" PreviewMouseDown="AnimatedTabControl_PreviewMouseDown"
                                                   >
                     <TabItem Header="Equipment Selector" Name="EquipTab">
                         <Grid>
-                            <CheckBox Content="Include OffHand" Name="CheckIncluded" HorizontalAlignment="Left" Margin="214,11,0,0" VerticalAlignment="Top" Width="123"/>
+                            <CheckBox Content="Include OffHand" Name="CheckIncluded" HorizontalAlignment="Left" Margin="203,11,0,0" VerticalAlignment="Top" Width="208"/>
                             <DataGrid x:Name="EquipBox" HorizontalAlignment="Left" Height="270" Margin="-6,42,0,0" VerticalAlignment="Top" Width="478" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="EquipBox_SelectionChanged">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="300"/>
                                     <DataGridTextColumn Header="Model Values" Binding="{Binding Path=ModelMain}" Width="*"/>
                                 </DataGrid.Columns>
                             </DataGrid>
-                            <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="26" Margin="2,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="461"/>
+                            <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="26" Margin="2,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="461" TextChanged="SearchModelBox_TextChanged" BorderThickness="0,1"/>
                             <ComboBox materialDesign:HintAssist.Hint="Select Type" x:Name="EquipBoxC" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="146" SelectionChanged="EquipBoxC_SelectionChanged" PreviewMouseDown="EquipBoxC_PreviewMouseDown">
                                 <ComboBoxItem Content="Main Hand"/>
                                 <ComboBoxItem Content="Off Hand"/>
@@ -60,6 +60,21 @@
                                 <ComboBoxItem Content="Wrist"/>
                                 <ComboBoxItem Content="Right Finger"/>
                                 <ComboBoxItem Content="Left Finger"/>
+                            </ComboBox>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="NPC Selector" Name="NPCTab">
+                        <Grid>
+                            <DataGrid x:Name="residentlist" HorizontalAlignment="Left" Height="270" Margin="-6,42,0,0" VerticalAlignment="Top" Width="478" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="residentlist_SelectionChanged">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <TextBox x:Name="SearchModelBox2" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="26" Margin="2,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="461" TextChanged="SearchModelBox2_TextChanged" BorderThickness="0,1"/>
+                            <ComboBox SelectedIndex="0" materialDesign:HintAssist.Hint="Select Type" x:Name="LoadType" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="146" PreviewMouseDown="EquipBoxC_PreviewMouseDown">
+                                <ComboBoxItem Content="All"/>
+                                <ComboBoxItem Content="Appearance Only"/>
+                                <ComboBoxItem Content="Equipment Only"/>
                             </ComboBox>
                         </Grid>
                     </TabItem>

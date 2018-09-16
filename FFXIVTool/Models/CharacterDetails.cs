@@ -368,6 +368,9 @@ namespace FFXIVTool.Models
             Emote = new Address<int>();
             EmoteSpeed1 = new Address<float>();
             EmoteSpeed2 = new Address<float>();
+            Max.Checker = true;
+            Min.Checker = true;
+            CZoom.Checker = true;
         }
     }
 }

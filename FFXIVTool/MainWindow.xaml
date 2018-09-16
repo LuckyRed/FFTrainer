@@ -21,8 +21,11 @@
             <TabItem Header="Character">
                 <Views:CharacterDetailsView Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             </TabItem>
-            <TabItem Header="Equipmemt">
+            <TabItem Header="Equipment">
                 <Views:CharacterDetailsView2 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            </TabItem>
+            <TabItem Header="World">
+                <Views:CharacterDetailsView3 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             </TabItem>
         </TabControl>
         <ComboBox HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="131" ItemsSource="{Binding Path=CharacterDetails.CharacterDetails.Names}" SelectedIndex="{Binding Path=CharacterDetails.CharacterDetails.SelectedIndex}"/>
@@ -42,5 +45,6 @@
         </Button>
         <Button x:Name="CharacterRefreshButton" Content="Character Refresh" HorizontalAlignment="Left" Margin="233,6,0,0" VerticalAlignment="Top" Width="151" Click="CharacterRefreshButton_Click"/>
         <Button x:Name="FindProcess" Content="Find New Process" HorizontalAlignment="Left" Margin="944,6,0,0" VerticalAlignment="Top" Width="151" Click="FindProcess_Click"/>
+        <Button x:Name="NPCRefresh" Content="NPC Refresh" HorizontalAlignment="Left" Margin="389,6,0,0" VerticalAlignment="Top" Width="151" Click="NPCRefresh_Click"/>
     </Grid>
 </controls:MetroWindow>

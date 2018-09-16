@@ -16,6 +16,8 @@ namespace FFXIVTool.ViewModel
         public CharacterDetails CharacterDetails { get => (CharacterDetails)model; set => model = value; }
         private RefreshEntitiesCommand refreshEntitiesCommand;
         public static string eOffset = "8";
+        public static bool NotAllowed = false;
+        public static bool CheckAble = true;
         HashSet<int> ZoneBlacklist = new HashSet<int> { 691, 692, 693, 694, 695, 696, 697, 698, 733, 734, 725, 748, 749, 750, 751, 752, 753, 754, 755, 758, 765, 766, 767, 777, 791 };
         public static string baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset);
         public RefreshEntitiesCommand RefreshEntitiesCommand
@@ -77,6 +79,51 @@ namespace FFXIVTool.ViewModel
         }
         private void Work()
         {
+            CharacterDetails.Territoryxd.value = MemoryManager.Instance.MemLib.readInt(MemoryManager.GetAddressString(MemoryManager.Instance.TerritoryAddress, Settings.Instance.Character.Territory));
+            if (ZoneBlacklist.Contains(CharacterDetails.Territoryxd.value))
+            {
+                if (CharacterDetails.Max.value > (float)20.00) // Maximum Zoom limit is 20.00
+                {
+                    CharacterDetails.Max.freeze = false;
+                    CharacterDetails.Max.value = (float)20.00;
+                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.Max), "float", "20");
+                }
+                if (CharacterDetails.Min.value < (float)1.50) // Minimum Zoom limit is 1.50
+                {
+                    CharacterDetails.Min.freeze = false;
+                    CharacterDetails.Min.value = (float)1.50;
+                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.Min), "float", "1.50");
+                }
+                if (CharacterDetails.CZoom.value > (float)20.00) // Camera's current zoom 
+                {
+                    CharacterDetails.CZoom.freeze = false;
+                    CharacterDetails.CZoom.value = (float)19.50;
+                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CZoom), "float", "20");
+                }
+                if (CheckAble == true)
+                {
+                    NotAllowed = true;
+                    CheckAble = false;
+                    CharacterDetails.Max.freeze = false;
+                    CharacterDetails.CZoom.freeze = false;
+                    CharacterDetails.Min.freeze = false;
+                    //These are the checkbox to freeze addresses
+                    CharacterDetails.Max.Checker = false;
+                    CharacterDetails.Min.Checker = false;
+                    CharacterDetails.CZoom.Checker = false;
+                }
+            }
+            else
+            {
+                if (CheckAble == false)
+                {
+                    CheckAble = true;
+                    NotAllowed = false;
+                    CharacterDetails.Max.Checker = true;
+                    CharacterDetails.Min.Checker = true;
+                    CharacterDetails.CZoom.Checker = true;
+                }
+            }
             try
             {
                 baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset);
@@ -280,7 +327,38 @@ namespace FFXIVTool.ViewModel
                 if (!CharacterDetails.OffhandGreen.freeze) CharacterDetails.OffhandGreen.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.OffhandGreen));
 
                 if (!CharacterDetails.OffhandRed.freeze) CharacterDetails.OffhandRed.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.OffhandRed));
+                if (!CharacterDetails.CameraHeight2.freeze) CharacterDetails.CameraHeight2.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraHeight));
 
+                if (!CharacterDetails.CameraYAMin.freeze) CharacterDetails.CameraYAMin.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraYAMin));
+
+                if (!CharacterDetails.CameraYAMax.freeze) CharacterDetails.CameraYAMax.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraYAMax));
+
+                if (!CharacterDetails.FOV2.freeze) CharacterDetails.FOV2.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.FOV2));
+
+                if (!CharacterDetails.CameraUpDown.freeze) CharacterDetails.CameraUpDown.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraUpDown));
+
+                if (!CharacterDetails.FOVMAX.freeze)
+                {
+                    CharacterDetails.FOVMAX.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.FOVMAX));
+                    CharacterDetails.FOVC.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.FOVC));
+                }
+
+                if (!CharacterDetails.CZoom.freeze) CharacterDetails.CZoom.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CZoom));
+
+                if (!CharacterDetails.Min.freeze) CharacterDetails.Min.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.Min));
+
+                if (!CharacterDetails.Max.freeze) CharacterDetails.Max.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.Max));
+
+                if (!CharacterDetails.CamZ.freeze) CharacterDetails.CamZ.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CamZ));
+
+                if (!CharacterDetails.CamY.freeze) CharacterDetails.CamY.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CamY));
+
+                if (!CharacterDetails.CamX.freeze) CharacterDetails.CamX.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CamX));
+
+                if (!CharacterDetails.CameraHeight.freeze) CharacterDetails.CameraHeight.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CameraHeight));
+
+                if (!CharacterDetails.Weather.freeze) CharacterDetails.Weather.value = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.WeatherAddress, Settings.Instance.Character.Weather));
+                CharacterDetails.TimeControl.value = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl));
                 if (!CharacterDetails.HeadPiece.Activated) CharacterDetails.HeadSlot.value = CharacterDetails.HeadPiece.value + "," + CharacterDetails.HeadV.value + "," + CharacterDetails.HeadDye.value;
                 if (!CharacterDetails.Chest.Activated) CharacterDetails.BodySlot.value = CharacterDetails.Chest.value + "," + CharacterDetails.ChestV.value + "," + CharacterDetails.ChestDye.value;
                 if (!CharacterDetails.Arms.Activated) CharacterDetails.ArmSlot.value = CharacterDetails.Arms.value + "," + CharacterDetails.ArmsV.value + "," + CharacterDetails.ArmsDye.value;

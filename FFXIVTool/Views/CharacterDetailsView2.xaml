@@ -11,7 +11,7 @@
     <Grid>
         <Border BorderBrush="Black" BorderThickness="0,0,1,0" HorizontalAlignment="Left" Height="460" Margin="-185,0,0,0" VerticalAlignment="Top" Width="828"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.Job.freeze}" Content="Main Hand" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=CharacterDetails.Job.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,5,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.Job.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,5,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Model ID"/></TextBlock>
@@ -27,14 +27,14 @@
         </ComboBox>
         <Button Name="MainSearch" Content="Search" HorizontalAlignment="Left" Margin="475,12,0,0" VerticalAlignment="Top" Width="76" Click="MainSearch_Click"/>
 
-        <TextBox Text="{Binding Path=CharacterDetails.WeaponBase.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,5,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.WeaponBase.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,5,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Base"/></TextBlock>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <TextBox Text="{Binding Path=CharacterDetails.WeaponV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="243,5,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.WeaponV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="243,5,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Variant"/></TextBlock>
@@ -42,21 +42,21 @@
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.Offhand.freeze}" Content="Off Hand" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=CharacterDetails.Offhand.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,49,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.Offhand.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,49,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Model ID"/></TextBlock>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <TextBox Text="{Binding Path=CharacterDetails.OffhandBase.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,49,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.OffhandBase.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,49,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Base"/></TextBlock>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <TextBox Text="{Binding Path=CharacterDetails.OffhandV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="243,49,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.OffhandV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="243,49,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Variant"/></TextBlock>
@@ -73,14 +73,14 @@
         <Button Name="OffSearch" Content="Search" HorizontalAlignment="Left" Margin="475,56,0,0" VerticalAlignment="Top" Width="76" Click="OffSearch_Click"/>
 
         <CheckBox IsChecked="{Binding Path=CharacterDetails.HeadPiece.freeze}" Content="Head" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=CharacterDetails.HeadPiece.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,96,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.HeadPiece.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,96,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Base"/></TextBlock>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <TextBox Text="{Binding Path=CharacterDetails.HeadV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,96,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.HeadV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,96,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Variant"/></TextBlock>
@@ -96,14 +96,14 @@
         </ComboBox>
         <Button Name="HeadSearch" Content="Search" HorizontalAlignment="Left" Margin="414,103,0,0" VerticalAlignment="Top" Width="76" Click="HeadSearch_Click"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.Chest.freeze}" Content="Body" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=CharacterDetails.Chest.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,143,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.Chest.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,143,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Base"/></TextBlock>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <TextBox Text="{Binding Path=CharacterDetails.ChestV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,143,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.ChestV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,143,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Variant"/></TextBlock>
@@ -119,14 +119,14 @@
         </ComboBox>
         <Button Name="BodySearch" Content="Search" HorizontalAlignment="Left" Margin="414,150,0,0" VerticalAlignment="Top" Width="76" Click="BodySearch_Click"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.Arms.freeze}" Content="Hands" HorizontalAlignment="Left" Margin="10,204,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=CharacterDetails.Arms.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,190,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.Arms.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,190,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Base"/></TextBlock>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <TextBox Text="{Binding Path=CharacterDetails.ArmsV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,190,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.ArmsV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,190,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Variant"/></TextBlock>
@@ -142,14 +142,14 @@
         </ComboBox>
         <Button Name="HandSearch" Content="Search" HorizontalAlignment="Left" Margin="414,197,0,0" VerticalAlignment="Top" Width="76" Click="HandSearch_Click"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.Legs.freeze}" Content="Legs" HorizontalAlignment="Left" Margin="10,251,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=CharacterDetails.Legs.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,237,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.Legs.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,237,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Base"/></TextBlock>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <TextBox Text="{Binding Path=CharacterDetails.LegsV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,237,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.LegsV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,237,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Variant"/></TextBlock>
@@ -165,14 +165,14 @@
         </ComboBox>
         <Button Name="LegsSearch" Content="Search" HorizontalAlignment="Left" Margin="414,244,0,0" VerticalAlignment="Top" Width="76" Click="LegsSearch_Click"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.Feet.freeze}" Content="Feet" HorizontalAlignment="Left" Margin="10,298,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=CharacterDetails.Feet.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,284,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.Feet.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,284,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Base"/></TextBlock>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <TextBox Text="{Binding Path=CharacterDetails.FeetVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,284,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.FeetVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,284,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Variant"/></TextBlock>
@@ -188,14 +188,14 @@
         </ComboBox>
         <Button Name="FeetSearch" Content="Search" HorizontalAlignment="Left" Margin="414,291,0,0" VerticalAlignment="Top" Width="76" Click="FeetSearch_Click"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.Ear.freeze}" Content="Ear" HorizontalAlignment="Left" Margin="10,342,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=CharacterDetails.Ear.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,328,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.Ear.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,328,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Base"/></TextBlock>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <TextBox Text="{Binding Path=CharacterDetails.EarVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,328,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.EarVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,328,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Variant"/></TextBlock>
@@ -204,14 +204,14 @@
         </TextBox>
         <Button Name="EarSearch" Content="Search" HorizontalAlignment="Left" Margin="243,335,0,0" VerticalAlignment="Top" Width="76" Click="EarSearch_Click"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.Neck.freeze}" Content="Neck" HorizontalAlignment="Left" Margin="10,386,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=CharacterDetails.Neck.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,372,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.Neck.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,372,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Base"/></TextBlock>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <TextBox Text="{Binding Path=CharacterDetails.NeckVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,372,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.NeckVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,372,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Variant"/></TextBlock>
@@ -220,14 +220,14 @@
         </TextBox>
         <Button Name="NeckSearch" Content="Search" HorizontalAlignment="Left" Margin="243,379,0,0" VerticalAlignment="Top" Width="76" Click="NeckSearch_Click"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.Wrist.freeze}" Content="Wrist" HorizontalAlignment="Left" Margin="10,430,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=CharacterDetails.Wrist.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,416,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.Wrist.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="101,416,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Base"/></TextBlock>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <TextBox Text="{Binding Path=CharacterDetails.WristVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,416,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.WristVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="182,416,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Variant"/></TextBlock>
@@ -236,14 +236,14 @@
         </TextBox>
         <Button Name="WristSearch" Content="Search" HorizontalAlignment="Left" Margin="243,423,0,0" VerticalAlignment="Top" Width="76" Click="WristSearch_Click"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.RFinger.freeze}" Content="Right Ring" HorizontalAlignment="Left" Margin="320,342,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=CharacterDetails.RFinger.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="410,328,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.RFinger.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="410,328,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Base"/></TextBlock>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <TextBox Text="{Binding Path=CharacterDetails.RFingerVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="492,328,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.RFingerVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="492,328,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Variant"/></TextBlock>
@@ -252,14 +252,14 @@
         </TextBox>
         <Button Name="RightSearch" Content="Search" HorizontalAlignment="Left" Margin="553,335,0,0" VerticalAlignment="Top" Width="76" Click="RightSearch_Click"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.LFinger.freeze}" Content="Left Ring" HorizontalAlignment="Left" Margin="320,386,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Path=CharacterDetails.LFinger.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="410,372,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.LFinger.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="410,372,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="76" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Base"/></TextBlock>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <TextBox Text="{Binding Path=CharacterDetails.LFingerVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="492,372,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center">
+        <TextBox Text="{Binding Path=CharacterDetails.LFingerVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="492,372,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="56" TextAlignment="Center" PreviewTextInput="DigitCheckInput">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
                     <TextBlock><Run Text="Variant"/></TextBlock>
@@ -296,6 +296,11 @@
         <CheckBox IsChecked="{Binding Path=CharacterDetails.OffhandBlue.freeze}" Content="B" HorizontalAlignment="Left" Margin="862,221,0,0" VerticalAlignment="Top"/>
         <mah:NumericUpDown x:Name="OffBlue" Value="{Binding Path=CharacterDetails.OffhandBlue.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="897,215,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="OffBlue_SourceUpdated"/>
         <Views:EquipmentFlyOut x:Name="EquipmentControl" Width="480" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="634,0,0,-12"/>
+        <Button x:Name="NPC_Click" Content="NPC Apperances" HorizontalAlignment="Left" Margin="578,102,0,0" VerticalAlignment="Top" Width="200" Height="52" Click="NPC_Click2">
+            <Button.LayoutTransform>
+                <RotateTransform Angle="90" />
+            </Button.LayoutTransform>
+        </Button>
 
     </Grid>
 </UserControl>
