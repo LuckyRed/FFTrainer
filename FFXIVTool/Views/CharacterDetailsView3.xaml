@@ -1,0 +1,52 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:Views="clr-namespace:FFXIVTool.Views"
+             x:Class="FFXIVTool.Views.CharacterDetailsView3"
+             TextElement.FontSize="13.25"
+             mc:Ignorable="d" 
+             d:DesignHeight="460" d:DesignWidth="1115">
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="294" VerticalAlignment="Top" Width="408" SourceUpdated="CurrentZoom_SourceUpdated"/>
+        <CheckBox IsEnabled="{Binding Path=CharacterDetails.Max.Checker}" IsChecked="{Binding Path=CharacterDetails.Max.freeze}" Content="Max Zoom" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
+        <mah:NumericUpDown  x:Name="MaxZoom" Value="{Binding Path=CharacterDetails.Max.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="MaxZoom_SourceUpdated"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Min.freeze}" IsEnabled="{Binding Path=CharacterDetails.Min.Checker}" Content="Min Zoom" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top"/>
+        <mah:NumericUpDown x:Name="Min_Zoom" Value="{Binding Path=CharacterDetails.Min.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="90,41,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="Min_Zoom_SourceUpdated"/>
+        <CheckBox IsEnabled="{Binding Path=CharacterDetails.CZoom.Checker}" IsChecked="{Binding Path=CharacterDetails.CZoom.freeze}" Content="Current Zoom" HorizontalAlignment="Left" Margin="0,72,0,0" VerticalAlignment="Top"/>
+        <mah:NumericUpDown x:Name="CurrentZoom" Value="{Binding Path=CharacterDetails.CZoom.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="109,72,0,0" VerticalAlignment="Top" Width="141" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CurrentZoom_SourceUpdated"/>
+        <Slider x:Name="CZoom2" Value="{Binding Path=CharacterDetails.CZoom.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="250,74,0,0" VerticalAlignment="Top" Width="145" IsSnapToTickEnabled="True" Interval="1" TickFrequency="0.1" Maximum="100" SourceUpdated="CurrentZoom_SourceUpdated"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.FOVC.freeze}" Content="FoV" HorizontalAlignment="Left" Margin="0,103,0,0" VerticalAlignment="Top"/>
+        <mah:NumericUpDown x:Name="CurrentFOV" Value="{Binding Path=CharacterDetails.FOVC.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Minimum="0" HorizontalAlignment="Left" Margin="109,103,0,0" VerticalAlignment="Top" Width="141" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CurrentFOV_SourceUpdated"/>
+        <Slider x:Name="FOV1S" Value="{Binding Path=CharacterDetails.FOVC.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="250,104,0,0" VerticalAlignment="Top" Width="145" TickPlacement="BottomRight" Maximum="2" TickFrequency="0.05" IsSnapToTickEnabled="True" Interval="1" SourceUpdated="CurrentFOV_SourceUpdated"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.FOV2.freeze}" Content="FoV 2" HorizontalAlignment="Left" Margin="0,134,0,0" VerticalAlignment="Top"/>
+        <mah:NumericUpDown x:Name="FOV2" Value="{Binding Path=CharacterDetails.FOV2.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="109,134,0,0" VerticalAlignment="Top" Width="141" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="FOV2_SourceUpdated"/>
+        <Slider x:Name="FOV2S" Value="{Binding Path=CharacterDetails.FOV2.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="250,134,0,0" VerticalAlignment="Top" Width="145" Maximum="1" Minimum="-1" TickFrequency="0.1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Interval="1" SourceUpdated="FOV2_SourceUpdated"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.CameraHeight2.freeze}" Content="CamHeight" HorizontalAlignment="Left" Margin="0,165,0,0" VerticalAlignment="Top"/>
+        <mah:NumericUpDown x:Name="CameraHeight2" Value="{Binding Path=CharacterDetails.CameraHeight2.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="109,165,0,0" VerticalAlignment="Top" Width="141" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CameraHeight2_SourceUpdated"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.CameraYAMin.freeze}" Content="Cam Y Min" HorizontalAlignment="Left" Margin="0,196,0,0" VerticalAlignment="Top"/>
+        <mah:NumericUpDown x:Name="CamYMin" Value="{Binding Path=CharacterDetails.CameraYAMin.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="109,196,0,0" VerticalAlignment="Top" Width="141" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CamYMin_SourceUpdated"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.CameraYAMax.freeze}" Content="Cam Y Max" HorizontalAlignment="Left" Margin="0,227,0,0" VerticalAlignment="Top"/>
+        <mah:NumericUpDown x:Name="CamYMax" Value="{Binding Path=CharacterDetails.CameraYAMax.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="109,227,0,0" VerticalAlignment="Top" Width="141" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CamYMax_SourceUpdated"/>
+        <CheckBox  IsChecked="{Binding Path=CharacterDetails.CameraUpDown.freeze}" Content="Cam Up/Down" HorizontalAlignment="Left" Margin="0,258,0,0" VerticalAlignment="Top"/>
+        <mah:NumericUpDown x:Name="CamUpDown" Value="{Binding Path=CharacterDetails.CameraUpDown.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="109,258,0,0" VerticalAlignment="Top" Width="141" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CamUpDown_SourceUpdated"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Weather.freeze}" Content="Weather" HorizontalAlignment="Left" Margin="0,303,0,0" VerticalAlignment="Top"/>
+        <mah:NumericUpDown x:Name="Weather" Maximum="140" Minimum="1" Value="{Binding Path=CharacterDetails.Weather.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="76,299,0,0" VerticalAlignment="Top" Width="116" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" Interval="1" TextAlignment="Right" HasDecimals="False" NumericInputMode="Numbers" SourceUpdated="Weather_SourceUpdated"/>
+        <ComboBox x:Name="WeatherBox" materialDesign:HintAssist.Hint="Weather Select" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="76,325,0,0" VerticalAlignment="Top" Width="116" SelectionChanged="WeatherBox_SelectionChanged" PreviewMouseDown="WeatherBox_PreviewMouseDown">
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+        </ComboBox>
+        <Button Content="Refresh Me" HorizontalAlignment="Left" Margin="203,336,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="203,299,0,0" TextWrapping="Wrap" Text="Not all Weather ID work on X Zone" VerticalAlignment="Top" Width="130" Height="39"/>
+        <Slider x:Name="Timexd" Value="{Binding Path=CharacterDetails.TimeControl.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="16,392,0,0" VerticalAlignment="Top" Width="234" Maximum="10" SmallChange="1" TickPlacement="BottomRight" Interval="1" IsSnapToTickEnabled="True" Height="32" SourceUpdated="Timexd_SourceUpdated"/>
+        <Label Content="Time Control" HorizontalAlignment="Left" Margin="76,367,0,0" VerticalAlignment="Top" Width="116"/>
+        <TextBlock HorizontalAlignment="Left" Margin="17,424,0,0" TextWrapping="Wrap" Text="Set this slider to minimum for real Eorzea Time" VerticalAlignment="Top" Height="36" Width="233"/>
+    </Grid>
+</UserControl>
